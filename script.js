@@ -300,4 +300,64 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 }
 
+    // ==== Dark / Light Mode Toggle ====
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
+
+    const applyTheme = (isDark) => {
+        document.body.classList.toggle('dark-mode', isDark);
+        if (themeIcon) {
+            themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    };
+
+    // Load saved preference
+    const savedTheme = localStorage.getItem('ba-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(savedTheme ? savedTheme === 'dark' : prefersDark);
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const isDark = !document.body.classList.contains('dark-mode');
+            applyTheme(isDark);
+            localStorage.setItem('ba-theme', isDark ? 'dark' : 'light');
+        });
+    }
+
+    // ==== Back to Top Button ====
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // ==== Cookie Consent Banner ====
+    const cookieBanner = document.getElementById('cookieBanner');
+    const acceptCookies = document.getElementById('acceptCookies');
+    const dismissCookies = document.getElementById('dismissCookies');
+
+    if (cookieBanner && !localStorage.getItem('ba-cookie-consent')) {
+        // Show after small delay for better UX
+        setTimeout(() => cookieBanner.classList.add('visible'), 1500);
+    }
+
+    const hideCookieBanner = (accepted) => {
+        if (cookieBanner) {
+            cookieBanner.classList.remove('visible');
+            localStorage.setItem('ba-cookie-consent', accepted ? 'accepted' : 'dismissed');
+        }
+    };
+
+    if (acceptCookies) acceptCookies.addEventListener('click', () => hideCookieBanner(true));
+    if (dismissCookies) dismissCookies.addEventListener('click', () => hideCookieBanner(false));
+
 });
