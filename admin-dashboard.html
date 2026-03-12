@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Brilliant Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { background-color: var(--bg-light); display: flex; flex-direction: column; min-height: 100vh; font-family: var(--font-body); }
+        .dashboard-container { display: flex; flex: 1; max-width: 1400px; margin: 0 auto; width: 100%; padding-top: 80px; }
+        .sidebar { width: 250px; background: white; border-right: 1px solid rgba(0,0,0,0.05); padding: 30px 20px; position: fixed; height: 100vh; }
+        .sidebar-links { margin-top: 30px; display: flex; flex-direction: column; gap: 10px; }
+        .sidebar-links a { display: flex; align-items: center; gap: 15px; padding: 12px 20px; border-radius: 8px; color: var(--text-muted); font-weight: 500; }
+        .sidebar-links a:hover, .sidebar-links a.active { background: rgba(10, 31, 68, 0.05); color: var(--primary); }
+        .main-content { flex: 1; margin-left: 250px; padding: 40px; }
+        .dash-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+        
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 40px; }
+        .dash-card { background: white; padding: 25px; border-radius: 12px; box-shadow: var(--shadow-sm); display: flex; align-items: center; gap: 20px; border: 1px solid rgba(0,0,0,0.03); }
+        .dash-icon { width: 50px; height: 50px; border-radius: 10px; background: rgba(10, 31, 68, 0.1); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--primary); }
+        
+        /* Table Styles */
+        .table-section { background: white; border-radius: 12px; padding: 30px; box-shadow: var(--shadow-sm); overflow-x: auto; margin-bottom: 30px;}
+        .table-section h3 { margin-bottom: 20px; font-size: 1.2rem; display: flex; justify-content: space-between; align-items: center;}
+        table { width: 100%; border-collapse: collapse; }
+        th, td { text-align: left; padding: 15px; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 0.95rem; }
+        th { font-weight: 600; color: var(--text-muted); padding-top: 0; }
+        .status-badge { padding: 5px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+        .status-new { background: #e3f2fd; color: #1976d2; }
+        .status-contacted { background: #e8f5e9; color: #388e3c; }
+        .status-enrolled { background: #fff3e0; color: #f57c00; }
+
+        @media (max-width: 992px) {
+            .sidebar { display: none; }
+            .main-content { margin-left: 0; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar scrolled">
+        <div class="container" style="max-width: 1400px; padding: 0 40px;">
+            <a href="index.html" class="logo">Brilliant <span>Academy</span> ADMIN</a>
+            <div class="nav-links">
+                <a href="index.html">View Site</a>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="width: 35px; height: 35px; border-radius: 50%; background: var(--primary); color: white; display:flex; align-items:center; justify-content: center; font-weight: bold;">AD</div>
+                    <span style="font-weight: 600;">System Admin</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <span class="subheading">Management</span>
+            <div class="sidebar-links">
+                <a href="#" class="active"><i class="fas fa-chart-pie"></i> Overview</a>
+                <a href="#"><i class="fas fa-users"></i> Students</a>
+                <a href="#"><i class="fas fa-address-book"></i> Leads & Queries</a>
+                <a href="#"><i class="fas fa-book"></i> Courses Setup</a>
+                <a href="#"><i class="fas fa-laptop-code"></i> Mock Tests</a>
+                <a href="#"><i class="fas fa-bullhorn"></i> Announcements</a>
+                <a href="#" style="margin-top: auto; color: #dc3545;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="dash-header">
+                <div class="welcome-back">
+                    <h2>Admin Overview</h2>
+                    <p>Track enrollments, manage leads, and monitor platform activity.</p>
+                </div>
+                <button class="btn btn-primary" style="padding: 10px 20px; font-size: 0.85rem;"><i class="fas fa-download"></i> Export Report</button>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid-cards">
+                <div class="dash-card">
+                    <div class="dash-icon"><i class="fas fa-user-graduate"></i></div>
+                    <div>
+                        <h4 style="color:var(--text-muted); font-size:0.9rem;">Total Students</h4>
+                        <h3 style="font-size:1.8rem; color:var(--primary);">1,402</h3>
+                    </div>
+                </div>
+                <div class="dash-card">
+                    <div class="dash-icon" style="background: rgba(30, 77, 255, 0.1); color: var(--secondary);"><i class="fas fa-user-plus"></i></div>
+                    <div>
+                        <h4 style="color:var(--text-muted); font-size:0.9rem;">New Leads (Week)</h4>
+                        <h3 style="font-size:1.8rem; color:var(--primary);">48</h3>
+                    </div>
+                </div>
+                <div class="dash-card">
+                    <div class="dash-icon" style="background: rgba(255, 193, 7, 0.2); color: #d39e00;"><i class="fas fa-edit"></i></div>
+                    <div>
+                        <h4 style="color:var(--text-muted); font-size:0.9rem;">Test Participation</h4>
+                        <h3 style="font-size:1.8rem; color:var(--primary);">8,240</h3>
+                    </div>
+                </div>
+                <div class="dash-card">
+                    <div class="dash-icon" style="background: rgba(40, 167, 69, 0.1); color: #28a745;"><i class="fas fa-wallet"></i></div>
+                    <div>
+                        <h4 style="color:var(--text-muted); font-size:0.9rem;">Course Enrollments</h4>
+                        <h3 style="font-size:1.8rem; color:var(--primary);">322</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lead Management Table -->
+            <div class="table-section">
+                <h3>Recent Leads (Demo Requests) <a href="#" style="font-size:0.85rem; color:var(--secondary); font-weight:500;">View All</a></h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone Number</th>
+                            <th>Course Interest</th>
+                            <th>City</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight: 500;">Priya Sharma</td>
+                            <td>+91 98765 43210</td>
+                            <td>SSC CGL</td>
+                            <td>Pathankot</td>
+                            <td><span class="status-badge status-new">NEW</span></td>
+                            <td><button style="border:none; background:transparent; color:var(--secondary); cursor:pointer;"><i class="fas fa-phone"></i> Call</button></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 500;">Rahul Verma</td>
+                            <td>+91 99887 76655</td>
+                            <td>Banking Exams</td>
+                            <td>Gurdaspur</td>
+                            <td><span class="status-badge status-contacted">CONTACTED</span></td>
+                            <td><button style="border:none; background:transparent; color:var(--secondary); cursor:pointer;"><i class="fas fa-phone"></i> Call</button></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 500;">Aman Singh</td>
+                            <td>+91 88776 65544</td>
+                            <td>Punjab Police</td>
+                            <td>Amritsar</td>
+                            <td><span class="status-badge status-enrolled">ENROLLED</span></td>
+                            <td><button style="border:none; background:transparent; color:var(--text-muted); cursor:pointer;"><i class="fas fa-file-invoice"></i> View</button></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 500;">Kavita Devi</td>
+                            <td>+91 77665 54433</td>
+                            <td>Army Recruitment</td>
+                            <td>Pathankot</td>
+                            <td><span class="status-badge status-new">NEW</span></td>
+                            <td><button style="border:none; background:transparent; color:var(--secondary); cursor:pointer;"><i class="fas fa-phone"></i> Call</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+    </div>
+</body>
+</html>
