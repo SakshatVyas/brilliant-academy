@@ -1044,3 +1044,117 @@ img {
   background: var(--secondary);
   color: white;
 }
+
+/* =========================================================================
+   RESULTS TICKER & EXAM QUIZ
+   ========================================================================= */
+
+/* Results Ticker */
+.results-ticker-container {
+    width: 100%;
+    background: var(--primary);
+    color: var(--white);
+    padding: 12px 0;
+    overflow: hidden;
+    position: relative;
+    border-top: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    z-index: 10;
+}
+
+.results-ticker {
+    display: flex;
+    white-space: nowrap;
+    animation: ticker 40s linear infinite;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.results-ticker span {
+    padding-right: 50px;
+}
+
+@keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+}
+
+/* Exam Quiz Section */
+.exam-quiz {
+    background-color: var(--light-bg);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.quiz-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.quiz-container h2 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.quiz-container p {
+    color: var(--text-dark);
+    margin-bottom: 30px;
+}
+
+.quiz-block {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.quiz-question {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.quiz-btn {
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--primary);
+    padding: 12px 20px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quiz-btn:hover {
+    background: var(--accent);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+.quiz-result {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.quiz-result h3 {
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 15px;
+}
+
+.quiz-result p {
+    margin-bottom: 25px;
+}
