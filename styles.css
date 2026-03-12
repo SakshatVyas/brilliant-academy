@@ -86,16 +86,9 @@ img {
   display: block;
 }
 
-/* Animations */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
+/* GSAP Handling */
+.gsap-hidden {
+  visibility: hidden;
 }
 
 /* Buttons */
@@ -976,9 +969,78 @@ img {
   box-shadow: 0 0 0 3px rgba(30, 77, 255, 0.1);
 }
 
+/* WhatsApp Float */
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  width: 65px;
+  height: 65px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 2.2rem;
+  box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.05);
+  background-color: #128C7E;
+  color: white;
+}
+
 @media (max-width: 768px) {
   .chatbot-container {
-    width: 320px;
-    right: -10px;
+    width: calc(100vw - 40px);
+    right: 0;
+    bottom: 75px;
+    height: 60vh;
   }
+  .chatbot-widget {
+    bottom: 80px; /* Above the mobile sticky CTA */
+    right: 20px;
+  }
+  .chatbot-toggle {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+  .whatsapp-float {
+    bottom: 80px; /* Above the mobile sticky CTA */
+    left: 20px;
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+}
+
+/* Chatbot Options (AI Counsellor) */
+.chat-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chat-option-btn {
+  background: white;
+  border: 1px solid var(--secondary);
+  color: var(--secondary);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--font-body);
+}
+
+.chat-option-btn:hover {
+  background: var(--secondary);
+  color: white;
 }
