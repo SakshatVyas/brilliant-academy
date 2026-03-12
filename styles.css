@@ -282,7 +282,10 @@ img {
 }
 
 .about-features {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin: 0 auto;
   text-align: left;
 }
 
