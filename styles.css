@@ -282,13 +282,8 @@ img {
 }
 
 .about-features {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 15px;
+  display: inline-block;
   text-align: left;
-  max-width: max-content;
-  margin: 0 auto;
 }
 
 .feature-item {
@@ -296,6 +291,11 @@ img {
   align-items: center;
   gap: 12px;
   font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.feature-item:last-child {
+  margin-bottom: 0;
 }
 
 .feature-item i {
