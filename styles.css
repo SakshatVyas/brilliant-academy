@@ -282,11 +282,13 @@ img {
 }
 
 .about-features {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 15px;
   text-align: left;
+  max-width: max-content;
+  margin: 0 auto;
 }
 
 .feature-item {
