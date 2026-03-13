@@ -404,4 +404,36 @@ document.addEventListener('DOMContentLoaded', () => {
     if (acceptCookies) acceptCookies.addEventListener('click', () => hideCookieBanner(true));
     if (dismissCookies) dismissCookies.addEventListener('click', () => hideCookieBanner(false));
 
+    // ==== Gallery Lightbox Logic ====
+    const galleryItems = document.querySelectorAll(".gallery-item img");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+    // Open lightbox
+    if (galleryItems.length > 0 && lightbox && lightboxImg) {
+        galleryItems.forEach(item => {
+            item.parentElement.addEventListener("click", () => {
+                lightboxImg.src = item.src;
+                lightbox.classList.add("active");
+            });
+        });
+    }
+
+    // Close lightbox on X click
+    if (lightboxClose) {
+        lightboxClose.addEventListener("click", () => {
+            lightbox.classList.remove("active");
+        });
+    }
+
+    // Close lightbox on background click
+    if (lightbox) {
+        lightbox.addEventListener("click", (e) => {
+            if (e.target !== lightboxImg) {
+                lightbox.classList.remove("active");
+            }
+        });
+    }
+
 });
