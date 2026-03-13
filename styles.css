@@ -1574,3 +1574,332 @@ body.dark-mode .blog-meta {
   .blog-grid { gap: 24px; }
 }
 
+/* ========================================
+   MODERN UI ENHANCEMENTS (STATS, MARQUEE, TIMELINE, GLASSMORPHISM, PULSE)
+   ======================================== */
+
+/* Stats Counter */
+.stats-counter-section {
+  background: linear-gradient(135deg, var(--primary) 0%, #1a3a7a 100%);
+  color: white;
+  padding: 60px 0;
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-family: var(--font-heading);
+  color: var(--accent);
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.stat-label {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Success Marquee */
+.success-marquee-section {
+  padding: 40px 0;
+  background: var(--bg-light);
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee-container {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 30px;
+  animation: scrollMarquee 25s linear infinite;
+  padding-left: 30px;
+  width: fit-content;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+.success-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: var(--bg-white);
+  padding: 15px 25px;
+  border-radius: 50px;
+  box-shadow: var(--shadow-sm);
+  min-width: 250px;
+  flex-shrink: 0;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.success-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.success-info h4 {
+  font-size: 1rem;
+  margin-bottom: 2px;
+  color: var(--primary);
+  font-family: var(--font-heading);
+}
+
+.success-info p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+  font-weight: 600;
+}
+
+@keyframes scrollMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } 
+}
+
+/* Journey Timeline */
+.journey-timeline {
+  background: var(--bg-white);
+}
+
+.timeline-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  background: rgba(30, 77, 255, 0.1);
+  transform: translateX(-50%);
+}
+
+.timeline-step {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50%;
+  position: relative;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.timeline-step.right {
+  justify-content: flex-start;
+  padding-right: 0;
+  padding-left: 50%;
+}
+
+.step-dot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background: var(--accent);
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  z-index: 2;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.8);
+}
+
+.step-content {
+  background: var(--bg-light);
+  padding: 25px;
+  border-radius: var(--radius);
+  width: calc(100% - 60px);
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.step-content:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.timeline-step:not(.right) .step-content {
+  margin-right: 60px;
+}
+
+.timeline-step.right .step-content {
+  margin-left: 60px;
+}
+
+.step-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.step-content p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+@media (max-width: 768px) {
+  .timeline-line {
+    left: 30px;
+  }
+  .timeline-step, .timeline-step.right {
+    justify-content: flex-start;
+    padding-left: 80px;
+    padding-right: 0;
+  }
+  .step-dot {
+    left: 30px;
+  }
+  .timeline-step:not(.right) .step-content {
+    margin-right: 0;
+  }
+  .timeline-step.right .step-content {
+    margin-left: 0;
+  }
+  .step-content {
+    width: 100%;
+  }
+}
+
+/* Glassmorphism & Popular Course */
+.courses.bg-light {
+  background: linear-gradient(135deg, #f0f4f8 0%, #d9e2ec 100%);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.4) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.05) !important;
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.6) !important;
+  transform: translateY(-8px) !important;
+  box-shadow: 0 12px 40px rgba(31, 38, 135, 0.1) !important;
+  border-color: rgba(255, 255, 255, 1) !important;
+}
+
+.popular-course {
+  position: relative;
+  border: 2px solid var(--accent) !important;
+}
+
+.popular-badge {
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  background: var(--accent);
+  color: var(--primary);
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Pulse Animation for CTA */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.whatsapp-float {
+  animation: pulse 2s infinite;
+  border-radius: 50%; /* ensure pulse follows circle */
+}
+
+@keyframes pulse-primary {
+  0% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(255, 193, 7, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 193, 7, 0); }
+}
+
+.sticky-mobile-cta {
+  animation: pulse-primary 2s infinite;
+}
+
+/* Dark Mode Overrides for New Features */
+body.dark-mode .stats-counter-section {
+  background: var(--dm-surface);
+  border-top: 1px solid var(--dm-border);
+  border-bottom: 1px solid var(--dm-border);
+}
+
+body.dark-mode .success-marquee-section {
+  background: var(--dm-bg);
+}
+
+body.dark-mode .success-card {
+  background: var(--dm-surface);
+  border-color: var(--dm-border);
+}
+
+body.dark-mode .success-info h4 {
+  color: var(--dm-text);
+}
+
+body.dark-mode .journey-timeline {
+  background: var(--dm-bg);
+}
+
+body.dark-mode .step-content {
+  background: var(--dm-surface);
+  border: 1px solid var(--dm-border);
+}
+
+body.dark-mode .timeline-line {
+  background: var(--dm-border);
+}
+
+body.dark-mode .courses.bg-light {
+  background: linear-gradient(135deg, #161b22 0%, #0d1117 100%);
+}
+
+body.dark-mode .glass-card {
+  background: rgba(48, 54, 61, 0.4) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.dark-mode .glass-card:hover {
+  background: rgba(48, 54, 61, 0.6) !important;
+  border-color: rgba(88, 166, 255, 0.3) !important;
+}
+
+body.dark-mode .popular-course {
+  border-color: #e6ad00 !important;
+}
+
+body.dark-mode .popular-badge {
+  background: #e6ad00;
+}
+

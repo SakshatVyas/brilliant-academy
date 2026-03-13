@@ -102,6 +102,50 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             );
 
+            // Animate Stats Counter
+            const counters = document.querySelectorAll('.counter');
+            if (counters.length > 0) {
+                ScrollTrigger.create({
+                    trigger: '.stats-counter-section',
+                    start: 'top 85%',
+                    once: true,
+                    onEnter: () => {
+                        counters.forEach(counter => {
+                            const target = +counter.getAttribute('data-target');
+                            gsap.fromTo(counter, 
+                                { innerHTML: 0 }, 
+                                { 
+                                    innerHTML: target, 
+                                    duration: 2, 
+                                    ease: "power2.out",
+                                    snap: { innerHTML: 1 },
+                                    onUpdate: function() {
+                                        counter.innerHTML = Math.round(this.targets()[0].innerHTML);
+                                    }
+                                }
+                            );
+                        });
+                    }
+                });
+            }
+
+            // Animate Journey Timeline steps
+            gsap.fromTo('.timeline-step',
+                { y: 50, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.6,
+                    stagger: 0.3,
+                    ease: "back.out(1.2)",
+                    scrollTrigger: {
+                        trigger: '.timeline-container',
+                        start: "top 80%"
+                    }
+                }
+            );
+
+
             // Ensure ScrollTrigger recalculates after images and fonts load
             setTimeout(() => {
                 ScrollTrigger.refresh();
