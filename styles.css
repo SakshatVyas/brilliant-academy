@@ -267,18 +267,20 @@ img {
 }
 
 .about-content {
-  max-width: 800px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .about h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+  font-size: 2.8rem;
+  margin-bottom: 25px;
 }
 
 .about p {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--text-muted);
   margin-bottom: 40px;
+  line-height: 1.8;
 }
 
 .about-features-wrapper {
@@ -288,9 +290,9 @@ img {
 }
 
 .about-features {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px 40px;
   text-align: left;
 }
 
@@ -298,8 +300,8 @@ img {
   display: flex;
   align-items: center;
   gap: 12px;
-  font-weight: 500;
-  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 1.05rem;
 }
 
 .feature-item:last-child {
@@ -680,6 +682,7 @@ img {
   
   .about-features {
     grid-template-columns: 1fr;
+    gap: 15px;
   }
   
   .sticky-mobile-cta {
